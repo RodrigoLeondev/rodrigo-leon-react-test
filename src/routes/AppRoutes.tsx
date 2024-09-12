@@ -7,6 +7,7 @@ import ProtectedRoute from "../Components/ProtectedRoute";
 import ProductCreate from "../Pages/ProductCreate";
 
 function AppRouter() {
+  
   return (
     <Router>
       <Routes>

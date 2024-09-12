@@ -1,14 +1,7 @@
-import React, { useState } from "react";
-import {
-  TextField,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from "@mui/material";
-import useProductCreateStore from "../store/createProductStore";
-import styles from "../Styles/ProductCreate.module.scss";
+import React, { useState } from 'react';
+import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import useProductStore from '../store/productsStore';
+import styles from '../Styles/ProductCreate.module.scss';
 
 interface ProductFormProps {
   open: boolean;
@@ -16,20 +9,20 @@ interface ProductFormProps {
 }
 
 const ProductCreate: React.FC<ProductFormProps> = ({ open, onClose }) => {
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [title, setTitle] = useState('');
+  const [price, setPrice] = useState('');
+  const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
+  const [image, setImage] = useState('');
 
-  const { addProduct } = useProductCreateStore((state) => ({
+  const { addProduct } = useProductStore((state) => ({
     addProduct: state.addProduct,
   }));
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (title && price && category && description && image) {
       const newProduct = {
-        id: Date.now(),
+        id: Date.now(), 
         title,
         price: parseFloat(price),
         category,
@@ -37,9 +30,18 @@ const ProductCreate: React.FC<ProductFormProps> = ({ open, onClose }) => {
         image,
       };
       addProduct(newProduct);
+
+      await fetch('https://fakestoreapi.com/products', {
+        method: 'POST',
+        body: JSON.stringify(newProduct),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
       onClose();
     } else {
-      alert("Todos los campos son obligatorios");
+      alert('Todos los campos son obligatorios');
     }
   };
 

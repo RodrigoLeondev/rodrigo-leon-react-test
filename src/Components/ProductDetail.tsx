@@ -4,14 +4,10 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import Button from "@mui/material/Button";
 import styles from "../Styles/ProductDetail.module.scss";
+import { ProductDetailDialogProps } from "../Interfaces/ProductDetail";
 
-interface ProductDetailDialogProps {
-  open: boolean;
-  onClose: () => void;
-  product: any;
-}
 
-const ProductDetailDialog: React.FC<ProductDetailDialogProps> = ({
+const ProductDetail: React.FC<ProductDetailDialogProps> = ({
   open,
   onClose,
   product,
@@ -42,4 +38,4 @@ const ProductDetailDialog: React.FC<ProductDetailDialogProps> = ({
   );
 };
 
-export default ProductDetailDialog;
+export default ProductDetail;

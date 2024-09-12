@@ -1,6 +1,5 @@
 import React from "react";
 import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
@@ -15,23 +14,16 @@ const NavBar: React.FC = () => {
     navigate("/", { replace: true });
   };
 
-  const handleCreateProduct = () => {
-    navigate("/products/create", { replace: true });
-  };
-
   return (
     <AppBar position="static" className="navBar">
-      <Toolbar>
+      <div className="container-nav">
         <Typography variant="h6" className="title">
           Test by employee
         </Typography>
-        <Button color="inherit" onClick={handleCreateProduct}>
-          Crear Producto
-        </Button>
-        <Button color="inherit" onClick={handleLogout}>
+        <Button color="inherit" className="button-logout" onClick={handleLogout}>
           Cerrar Sesión
         </Button>
-      </Toolbar>
+      </div>
     </AppBar>
   );
 };
