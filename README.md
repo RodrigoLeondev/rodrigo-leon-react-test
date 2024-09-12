@@ -52,7 +52,7 @@ Este proyecto es una aplicación de gestión de productos que utiliza React, Typ
    npm run dev
    ```
 
-5. Abrir el navegador y navegar a http://localhost:3000/
+5. Abrir el navegador y navegar a http://localhost:5173/
 
 ### Estructura del proyecto
 
