@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import useAuthStore from '../store/useAuthStore';
 import { useNavigate } from 'react-router-dom';
-// import './Users.module.scss';
 
 const Users: React.FC = () => {
   const [newEmail, setNewEmail] = useState<string>('');
